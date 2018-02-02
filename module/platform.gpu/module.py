@@ -539,6 +539,8 @@ def set_freq(i):
     if tos=='': tos=i.get('os','')
     tdid=i.get('device_id','')
 
+    device_cfg=i.get('device_cfg',{})
+
     env=i.get('env',{})
 
     # Get OS info
@@ -549,6 +551,7 @@ def set_freq(i):
     ii['module_uoa']=cfg['module_deps']['platform.os']
     ii['skip_info_collection']='yes'
     ii['skip_device_init']='yes'
+    ii['update_target_os_dict']=device_cfg.get('update_target_os_dict',{})
     rr=ck.access(ii)
     if rr['return']>0: return rr
 
